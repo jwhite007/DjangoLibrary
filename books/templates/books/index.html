@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<body>
+
+<div class="container">
+    <h1>Books in Library</h1>
+    <hr />
+    <p><a href="{% url 'main:index' %}">RETURN TO LIBRARY MAIN PAGE</a></p>
+    <table border="2">
+        <tr>
+            <th>Title:</th>
+            <th>Author:</th>
+            <th>Action:</th>
+        </tr>
+        {% for book in Books %}
+        <tr>
+            <td>&nbsp;{{ book.title }}&nbsp;</td>
+            <td>&nbsp;{{ book.author_lastname }},&nbsp;{{ book.author_firstname }}&nbsp;</td>
+            {%if True == book.in_stock %}
+            <td><button id="button1" onclick="window.location='checkout_book/{{ book.id }}';">CHECK OUT</button></td>
+            {%else %}
+            <td><button id="button1" onclick="window.location='checkin_book/{{ book.id }}';">CHECK IN</button></td>
+            {%endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>

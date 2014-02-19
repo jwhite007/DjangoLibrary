@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<body>
+
+<div class="container">
+    <h1>Users of Library</h1>
+    <hr />
+    <p><a href="{% url 'main:index' %}">RETURN TO LIBRARY MAIN PAGE</a></p>
+    <p><a href="{% url 'users:submit' %}">ADD A USER</a></p>
+    <table border="2">
+        <tr>
+            <th>User:</th>
+            <th>Eddress:</th>
+            <th>Date Added:</th>
+            <th>Delete User:</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>&nbsp;{{ user.last_name }},&nbsp;{{ user.first_name }}&nbsp;</td>
+            <td>&nbsp;{{ user.eddress }}&nbsp;</td>
+            <td>&nbsp;{{ user.timestamp }}&nbsp;</td>
+            <td><button onclick="window.location='delete_user/{{ user.id }}';">Delete</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
